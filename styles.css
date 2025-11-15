@@ -1,0 +1,272 @@
+/* Description: This CSS file styles the Smart Crop Advisor website with a modern, professional look. It uses a clean color scheme (greens and whites), rounded cards, and responsive design via Flexbox and Grid. Includes dark mode support. Updated with Google Fonts, animations, tooltips, and enhanced professionalism. Improved alignment with centered text and balanced layouts. */
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
+
+:root {
+    --primary-color: #2E7D32; /* Deeper green for professionalism */
+    --secondary-color: #f8f9fa;
+    --accent-color: #FFC107; /* Subtle yellow accent */
+    --text-color: #212121;
+    --card-bg: #ffffff;
+    --border-radius: 12px;
+    --shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+    --transition: all 0.3s ease;
+}
+
+[data-theme="dark"] {
+    --secondary-color: #121212;
+    --text-color: #e0e0e0;
+    --card-bg: #1e1e1e;
+    --shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(135deg, var(--secondary-color) 0%, #e8f5e8 100%);
+    color: var(--text-color);
+    line-height: 1.6;
+    transition: var(--transition);
+}
+
+header {
+    background: linear-gradient(135deg, var(--primary-color) 0%, #4CAF50 100%);
+    color: white;
+    text-align: center;
+    padding: 30px 20px;
+    position: relative;
+    box-shadow: var(--shadow);
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.logo i {
+    font-size: 2em;
+}
+
+header h1 {
+    margin: 0;
+    font-weight: 700;
+}
+
+#theme-toggle {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: rgba(255, 255, 255, 0.2);
+    border: none;
+    color: white;
+    padding: 10px;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    font-size: 1em;
+    transition: var(--transition);
+}
+
+#theme-toggle:hover {
+    background: rgba(255, 255, 255, 0.3);
+}
+
+main {
+    max-width: 1200px;
+    margin: 30px auto;
+    padding: 0 20px;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 30px;
+}
+
+section {
+    background: var(--card-bg);
+    padding: 25px;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+    transition: var(--transition);
+    text-align: center; /* Centered alignment for sections */
+}
+
+section:hover {
+    transform: translateY(-2px);
+}
+
+section h2 {
+    margin-top: 0;
+    color: var(--primary-color);
+}
+
+#input-form {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    text-align: left; /* Align form labels/inputs to left for readability */
+}
+
+label {
+    margin-bottom: 8px;
+    font-weight: 500;
+    color: var(--primary-color);
+}
+
+input, select {
+    padding: 12px;
+    border: 2px solid #e0e0e0;
+    border-radius: var(--border-radius);
+    font-size: 1em;
+    transition: var(--transition);
+}
+
+input:focus, select:focus {
+    border-color: var(--primary-color);
+    outline: none;
+    box-shadow: 0 0 5px rgba(46, 125, 50, 0.3);
+}
+
+.tooltip {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: var(--primary-color);
+    color: white;
+    padding: 8px;
+    border-radius: 4px;
+    font-size: 0.9em;
+    white-space: nowrap;
+    z-index: 10;
+}
+
+.form-group:hover .tooltip {
+    display: block;
+}
+
+button {
+    background: linear-gradient(135deg, var(--primary-color) 0%, #4CAF50 100%);
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    font-size: 1em;
+    font-weight: 500;
+    transition: var(--transition);
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin: 0 auto; /* Center button */
+}
+
+button:hover {
+    background: linear-gradient(135deg, #1B5E20 0%, #388E3C 100%);
+    transform: scale(1.05);
+}
+
+#loading-spinner {
+    text-align: center;
+    margin-top: 10px;
+    color: var(--primary-color);
+}
+
+.hidden {
+    display: none;
+}
+
+.fade-in {
+    animation: fadeIn 0.5s ease-in;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+#recommendations, #tools-fertilizers {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 20px;
+}
+
+.card {
+    padding: 20px;
+    border-radius: var(--border-radius);
+    background: var(--card-bg);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transition: var(--transition);
+    text-align: left; /* Align card content to left for readability */
+}
+
+.card:hover {
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
+}
+
+#soil-chart-container {
+    grid-column: span 2;
+    text-align: center;
+}
+
+/* Styling for crop images */
+.crop-image {
+    width: 120px;
+    height: auto;
+    border-radius: 8px;
+    margin-right: 15px;
+    vertical-align: middle;
+    transition: var(--transition);
+}
+
+.crop-image:hover {
+    transform: scale(1.1);
+}
+
+footer {
+    text-align: center;
+    padding: 20px;
+    background: linear-gradient(135deg, var(--primary-color) 0%, #4CAF50 100%);
+    color: white;
+    margin-top: 40px;
+}
+
+footer a {
+    color: var(--accent-color);
+    text-decoration: none;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    main {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    #input-form {
+        grid-template-columns: 1fr;
+    }
+    .crop-image {
+        width: 100px;
+    }
+    header {
+        padding: 20px;
+    }
+    .logo {
+        flex-direction: column;
+        gap: 5px;
+    }
+}
